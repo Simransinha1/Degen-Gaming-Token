@@ -11,9 +11,9 @@ The Degen Gaming Token contract provides the following functionality:
 2. *Transferring tokens:* Players can transfer their tokens to others.
 
 3. *Redeeming tokens:* Players can redeem their tokens for items in the in-game store. The available items and their costs are as follows:
-   - M416 Glacier : 400 DGN
-   - Pharaoh X Suit : 900 DGN
-   - McLaren 570S : 1500 DGN
+   -  AK-47 Glacier : 400 DGN
+   - Space Suit  : 900 DGN
+   -  Bugatti Chiron : 1500 DGN
 
 4. *Checking token balance:* Players can check their token balance at any time.
 
@@ -37,7 +37,7 @@ import "hardhat/console.sol";
 contract DegenToken is ERC20, Ownable {
     address private _owner;
     address  public minter = 0xb6B5ed54Dc1faBEBfe3358B7F77A287DE9E359d2;
-    string public rewards = "1 --> M416 Glacier : 400, 2 -->  Pharaoh X Suit  :  900, 3 --> McLaren 570S :  1500";
+    string public rewards = "1 --> AK-47 Glacier : 600, 2 -->  Space Suit  :  1100, 3 --> Bugatti Chiron :  900";
     constructor() ERC20("Degen", "DGN") {
         _owner = msg.sender;
     }
@@ -64,27 +64,27 @@ contract DegenToken is ERC20, Ownable {
         require(item_num >= 1 && item_num <= 3, "Invalid item number");
 
         if (item_num == 1) {
-            require(balanceOf(msg.sender) >= 400,"Insufficient balance for M14");
-            _transfer(msg.sender, minter, 400);
-            console.log("M416 Glacier transfered to your account");
+            require(balanceOf(msg.sender) >= 600,"Insufficient balance for AK-47 Glacier ");
+            _transfer(msg.sender, minter, 600);
+            console.log("AK-47 Glacier transfered to your account");
         } 
         else if (item_num == 2) {
             require(
-                balanceOf(msg.sender) >= 900,
-                "Insufficient balance for pan"
+                balanceOf(msg.sender) >= 1100,
+                "Insufficient balance for Space Suit"
             );
-            _transfer(msg.sender, minter, 900);
-            console.log("Pharaoh X Suit transfered to your account");
+            _transfer(msg.sender, minter, 1100);
+            console.log("Space Suit transfered to your account");
 
            
         } else if (item_num == 3) {
             require(
-                balanceOf(msg.sender) >= 1500,
-                "Insufficient balance for  Jeep"
+                balanceOf(msg.sender) >= 2500,
+                "Insufficient balance for  Bugatti Chiron "
             );
             
-            _transfer(msg.sender , minter, 1500);
-            console.log(" McLaren 570S transfered to your account");
+            _transfer(msg.sender , minter, 2500);
+            console.log(" Bugatti Chiron transfered to your account");
 
             
         }
